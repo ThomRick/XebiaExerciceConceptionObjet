@@ -7,9 +7,9 @@ public class Position {
 
 	public Position() {}
 
-	public Position(int abscisse, int ordonnee) {
-		this.x = abscisse;
-		this.y = ordonnee;
+	public Position(int x, int y) {
+		this.x = x;
+		this.y = y;
 	}
 
 	public int getX() {

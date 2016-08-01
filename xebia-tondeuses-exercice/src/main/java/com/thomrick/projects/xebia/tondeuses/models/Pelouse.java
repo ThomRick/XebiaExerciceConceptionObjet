@@ -10,7 +10,7 @@ public class Pelouse {
 		this.yMax = yMax;
 	}
 
-	public boolean estEnCollisionAvecUnBord(Tondeuse tondeuse) {
+	public boolean sortParUnBord(Tondeuse tondeuse) {
 		boolean estEnCollisionAvecUnBord = false;
 		Position position = tondeuse.getPosition();
 		Orientation orientation = tondeuse.getOrientation();
@@ -41,7 +41,7 @@ public class Pelouse {
 	public int getY() {
 		return yMax;
 	}
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

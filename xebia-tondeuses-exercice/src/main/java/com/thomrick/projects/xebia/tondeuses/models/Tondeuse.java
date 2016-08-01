@@ -23,25 +23,25 @@ public class Tondeuse {
 	}
 	
 	public void avancer() {
-		int nouvelleCoordonneeX = 0;
-		int nouvelleCoordonneeY = 0;
+		int nouvellePositionX = 0;
+		int nouvellePositionY = 0;
 		if (this.orientation.equals(Orientation.Y_POSITIF)) {
-			nouvelleCoordonneeX = this.position.getX();
-			nouvelleCoordonneeY = this.position.getY() + 1;
+			nouvellePositionX = this.position.getX();
+			nouvellePositionY = this.position.getY() + 1;
 		}
 		else if (this.orientation.equals(Orientation.X_POSITIF)) {
-			nouvelleCoordonneeX = this.position.getX() + 1;
-			nouvelleCoordonneeY = this.position.getY();
+			nouvellePositionX = this.position.getX() + 1;
+			nouvellePositionY = this.position.getY();
 		}
 		else if (this.orientation.equals(Orientation.X_NEGATIF)) {
-			nouvelleCoordonneeX = this.position.getX() - 1;
-			nouvelleCoordonneeY = this.position.getY();
+			nouvellePositionX = this.position.getX() - 1;
+			nouvellePositionY = this.position.getY();
 		}
 		else if (this.orientation.equals(Orientation.Y_NEGATIF)) {
-			nouvelleCoordonneeX = this.position.getX();
-			nouvelleCoordonneeY = this.position.getY() - 1;
+			nouvellePositionX = this.position.getX();
+			nouvellePositionY = this.position.getY() - 1;
 		}
-		this.position = new Position(nouvelleCoordonneeX, nouvelleCoordonneeY);
+		this.position = new Position(nouvellePositionX, nouvellePositionY);
 	}
 	
 	public void pivoterADroite() {
