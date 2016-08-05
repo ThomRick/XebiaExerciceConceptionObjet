@@ -1,27 +1,34 @@
 package com.thomrick.projects.xebia.tondeuses.models;
 
+/**
+ * Tondeuse.java
+ *
+ * @author ThomRick
+ * @date 2016-08-04
+ *
+ */
 public class Tondeuse {
 	
+	/** position */
 	private Position position;
+	/** orientation */
 	private Orientation orientation;
 	
-	public Tondeuse() {
-		this(new Position(0, 0), Orientation.Y_POSITIF);
-	}
-	
-	public Tondeuse(Position position) {
-		this(position, Orientation.Y_POSITIF);
-	}
-	
-	public Tondeuse(Orientation orientation) {
-		this(new Position(0, 0), orientation);
-	}
-	
+	/**
+	 * Tondeuse 
+	 *
+	 * @param position
+	 * @param orientation
+	 */
 	public Tondeuse(Position position, Orientation orientation) {
 		this.position = position;
 		this.orientation = orientation;
 	}
 	
+	/**
+	 * avancer
+	 * 
+	 */
 	public void avancer() {
 		int nouvellePositionX = 0;
 		int nouvellePositionY = 0;
@@ -44,6 +51,10 @@ public class Tondeuse {
 		this.position = new Position(nouvellePositionX, nouvellePositionY);
 	}
 	
+	/**
+	 * pivoterADroite
+	 * 
+	 */
 	public void pivoterADroite() {
 		if (this.orientation.equals(Orientation.Y_POSITIF)) {
 			this.orientation = Orientation.X_POSITIF;
@@ -59,6 +70,10 @@ public class Tondeuse {
 		}
 	}
 	
+	/**
+	 * pivoterAGauche
+	 * 
+	 */
 	public void pivoterAGauche() {
 		if (this.orientation.equals(Orientation.Y_POSITIF)) {
 			this.orientation = Orientation.X_NEGATIF;
@@ -74,14 +89,27 @@ public class Tondeuse {
 		}
 	}
 	
+	/**
+	 * getPosition
+	 * 
+	 * @return la position de la tondeuse
+	 */
 	public Position getPosition() {
 		return this.position;
 	}
 	
+	/**
+	 * getOrientation
+	 * 
+	 * @return l'orientation de la tondeuse
+	 */
 	public Orientation getOrientation() {
 		return this.orientation;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -91,6 +119,9 @@ public class Tondeuse {
 		return result;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -110,6 +141,9 @@ public class Tondeuse {
 		return true;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
 		return "Tondeuse [position=" + position + ", orientation=" + orientation + "]";

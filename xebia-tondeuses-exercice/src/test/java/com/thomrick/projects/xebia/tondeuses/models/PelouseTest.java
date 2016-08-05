@@ -14,7 +14,7 @@ public class PelouseTest {
 	@Test
 	public void neSortPas() {
 		// ARRANGE
-		Tondeuse tondeuse = new Tondeuse();
+		Tondeuse tondeuse = new Tondeuse(new Position(0, 0), Orientation.X_POSITIF);
 		Pelouse pelouse = new Pelouse(5, 5);
 		// ACT
 		boolean estEnCollisionAvecUnBord = pelouse.sortParUnBord(tondeuse);
@@ -25,7 +25,7 @@ public class PelouseTest {
 	@Test
 	public void sortParLeBordGauche() {
 		// ARRANGE
-		Tondeuse tondeuse = new Tondeuse(Orientation.X_NEGATIF);
+		Tondeuse tondeuse = new Tondeuse(new Position(0, 0), Orientation.X_NEGATIF);
 		Pelouse pelouse = new Pelouse(5, 5);
 		// ACT
 		boolean estEnCollisionAvecUnBord = pelouse.sortParUnBord(tondeuse);

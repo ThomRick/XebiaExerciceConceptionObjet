@@ -9,8 +9,18 @@ import com.thomrick.projects.xebia.tondeuses.models.Pelouse;
 import com.thomrick.projects.xebia.tondeuses.models.Tondeuse;
 import com.thomrick.projects.xebia.tondeuses.models.TondeuseProgramme;
 
+/**
+ * ProgrammeRunner.java
+ *
+ * @author ThomRick
+ * @date 2016-08-04
+ *
+ */
 public class ProgrammeRunner implements IProgrammeRunner {
 
+	/* (non-Javadoc)
+	 * @see com.thomrick.projects.xebia.tondeuses.interfaces.IProgrammeRunner#run(com.thomrick.projects.xebia.tondeuses.models.TondeuseProgramme, com.thomrick.projects.xebia.tondeuses.models.Tondeuse, com.thomrick.projects.xebia.tondeuses.models.Pelouse)
+	 */
 	public TondeuseDescription run(TondeuseProgramme tondeuseProgramme, Tondeuse tondeuse, Pelouse pelouse) {
 		List<String> instructions = tondeuseProgramme.getInstructions();
 		for (String instruction : instructions) {
@@ -19,6 +29,13 @@ public class ProgrammeRunner implements IProgrammeRunner {
 		return new TondeuseDescription(tondeuse);
 	}
 
+	/**
+	 * executerInstruction
+	 * 
+	 * @param instruction
+	 * @param tondeuse
+	 * @param pelouse
+	 */
 	private void executerInstruction(String instruction, Tondeuse tondeuse, Pelouse pelouse) {
 		if (instruction.equals(InstructionConstantes.PIVOTER_DROITE)) {
 			tondeuse.pivoterADroite();

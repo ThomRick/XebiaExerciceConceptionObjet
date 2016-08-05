@@ -5,14 +5,32 @@ import com.thomrick.projects.xebia.tondeuses.models.Orientation;
 import com.thomrick.projects.xebia.tondeuses.models.Position;
 import com.thomrick.projects.xebia.tondeuses.models.Tondeuse;
 
+/**
+ * TondeuseDescription.java
+ *
+ * @author ThomRick
+ * @date 2016-08-04
+ *
+ */
 public class TondeuseDescription {
 
+	/** tondeuse */
 	private Tondeuse tondeuse;
 	
+	/**
+	 * TondeuseDescription 
+	 *
+	 * @param tondeuse
+	 */
 	public TondeuseDescription(Tondeuse tondeuse) {
 		this.tondeuse = tondeuse;
 	}
 	
+	/**
+	 * decrire
+	 * 
+	 * @return une chaine de caracteres conforme au contrat d'interface specifie pour decrire une tondeuse
+	 */
 	public String decrire() {
 		StringBuilder description = new StringBuilder();
 		ajouterPosition(description);
@@ -22,6 +40,11 @@ public class TondeuseDescription {
 	}
 
 
+	/**
+	 * ajouterPosition
+	 * 
+	 * @param description
+	 */
 	private void ajouterPosition(StringBuilder description) {
 		Position position = this.tondeuse.getPosition(); 
 		ajouterPositionX(description, position);
@@ -29,16 +52,33 @@ public class TondeuseDescription {
 		ajouterPositionY(description, position);
 	}
 
+	/**
+	 * ajouterPositionX
+	 * 
+	 * @param description
+	 * @param position
+	 */
 	private void ajouterPositionX(StringBuilder description, Position position) {
 		int x = position.getX();
 		description.append(x);
 	}
 
+	/**
+	 * ajouterPositionY
+	 * 
+	 * @param description
+	 * @param position
+	 */
 	private void ajouterPositionY(StringBuilder description, Position position) {
 		int y = position.getY();
 		description.append(y);
 	}
 	
+	/**
+	 * ajouterOrientation
+	 * 
+	 * @param description
+	 */
 	private void ajouterOrientation(StringBuilder description) {
 		Orientation orientation = this.tondeuse.getOrientation();
 		if (orientation.equals(Orientation.Y_POSITIF)) {
@@ -55,6 +95,9 @@ public class TondeuseDescription {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -63,6 +106,9 @@ public class TondeuseDescription {
 		return result;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
