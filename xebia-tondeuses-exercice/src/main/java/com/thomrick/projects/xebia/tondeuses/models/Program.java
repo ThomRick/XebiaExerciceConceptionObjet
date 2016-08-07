@@ -4,38 +4,38 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * TondeuseProgramme.java
+ * Program.java
  *
  * @author ThomRick
  * @date 2016-08-04
  *
  */
-public class TondeuseProgramme {
+public class Program {
 
 	/** instructions */
 	private List<String> instructions;
 	
 	/**
-	 * TondeuseProgramme 
+	 * Program 
 	 *
 	 */
-	public TondeuseProgramme() {
+	public Program() {
 		this(new ArrayList<String>());
 	}
 	
 	/**
-	 * TondeuseProgramme 
+	 * Program 
 	 *
 	 * @param instructions
 	 */
-	public TondeuseProgramme(List<String> instructions) {
+	public Program(List<String> instructions) {
 		this.instructions = instructions;
 	}
 
 	/**
 	 * getInstructions
 	 * 
-	 * @return la liste des instructions du programme
+	 * @return the program instruction list
 	 */
 	public List<String> getInstructions() {
 		return instructions;
@@ -63,7 +63,7 @@ public class TondeuseProgramme {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		TondeuseProgramme other = (TondeuseProgramme) obj;
+		Program other = (Program) obj;
 		if (instructions == null) {
 			if (other.instructions != null)
 				return false;

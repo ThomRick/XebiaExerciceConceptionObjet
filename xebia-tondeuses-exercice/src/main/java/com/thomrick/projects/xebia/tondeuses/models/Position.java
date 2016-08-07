@@ -28,7 +28,7 @@ public class Position {
 	/**
 	 * getX
 	 * 
-	 * @return la valeur x de la position
+	 * @return the x axis position
 	 */
 	public int getX() {
 		return x;
@@ -37,7 +37,7 @@ public class Position {
 	/**
 	 * getY
 	 * 
-	 * @return la valeur y de la position
+	 * @return the y axis position
 	 */
 	public int getY() {
 		return y;

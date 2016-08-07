@@ -15,7 +15,7 @@ public interface IBatchConsummer {
 	 * run
 	 * 
 	 * @param filePath
-	 * @return le resultat d'execution du batch sous forme d'une chaine de caracteres
+	 * @return a string result execution report
 	 * @throws IOException
 	 */
 	String run(String filePath) throws IOException;

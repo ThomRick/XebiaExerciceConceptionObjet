@@ -8,9 +8,9 @@ import java.io.InputStreamReader;
 import java.util.List;
 
 import com.thomrick.projects.xebia.tondeuses.consummers.IBatchConsummer;
-import com.thomrick.projects.xebia.tondeuses.interfaces.IEnvironnement;
-import com.thomrick.projects.xebia.tondeuses.interfaces.impl.Environnement;
-import com.thomrick.projects.xebia.tondeuses.interfaces.models.TondeuseDescription;
+import com.thomrick.projects.xebia.tondeuses.interfaces.IExecutionEnvironment;
+import com.thomrick.projects.xebia.tondeuses.interfaces.impl.ExecutionEnvironment;
+import com.thomrick.projects.xebia.tondeuses.interfaces.models.ExecutionReport;
 
 /**
  * BatchConsummer.java
@@ -21,81 +21,81 @@ import com.thomrick.projects.xebia.tondeuses.interfaces.models.TondeuseDescripti
  */
 public class BatchConsummer implements IBatchConsummer {
 	
-	/** environnement */
-	private IEnvironnement environnement;
+	/** executionEnvironment */
+	private IExecutionEnvironment executionEnvironment;
 	
 	/**
 	 * BatchConsummer 
 	 *
 	 */
 	public BatchConsummer() {
-		this.environnement = new Environnement();
+		this.executionEnvironment = new ExecutionEnvironment();
 	}
 	
 	/* (non-Javadoc)
 	 * @see com.thomrick.projects.xebia.tondeuses.consummers.IBatchConsummer#run(java.lang.String)
 	 */
 	public String run(String filePath) throws IOException {
-		String contenuFichier = recupererContenuFrom(filePath);
-		return imprimerRapportFrom(contenuFichier);
+		String fileContent = getFileContentFrom(filePath);
+		return printExecutionReportFrom(fileContent);
 	}
 
 	/**
 	 * imprimerRapportFrom
 	 * 
 	 * @param data
-	 * @return une chaine de caractere rapport d'execution du batch
+	 * @return the displayed report content
 	 */
-	private String imprimerRapportFrom(String data) {
-		StringBuilder rapport = new StringBuilder();
-		List<Integer> identifiants = this.environnement.initialiser(data);
-		for (int identifiant : identifiants) {
-			TondeuseDescription tondeuseDescription = recupererRapportExecutionProgramme(identifiant);
-			ajouterRapportExecutionProgramme(rapport, tondeuseDescription);
+	private String printExecutionReportFrom(String data) {
+		StringBuilder reportContentBuilder = new StringBuilder();
+		List<Integer> ids = this.executionEnvironment.initialize(data);
+		for (int id : ids) {
+			ExecutionReport executionReport = getExecutionReportOf(id);
+			addExecutionReportTo(reportContentBuilder, executionReport);
 		}
-		return rapport.toString();
+		return reportContentBuilder.toString();
 	}
 
 	/**
-	 * recupererRapportExecutionProgramme
+	 * getExecutionReport
 	 * 
-	 * @param identifiant
-	 * @return la description d'une tondeuse apres execution de son programme
+	 * @param id
+	 * @return an execution report
 	 */
-	private TondeuseDescription recupererRapportExecutionProgramme(int identifiant) {
-		return this.environnement.executerTondeuseProgramme(identifiant);
+	private ExecutionReport getExecutionReportOf(int id) {
+		return this.executionEnvironment.executeProgramById(id);
 	}
 	
 	/**
-	 * ajouterRapportExecutionProgramme
+	 * addExecutionReportTo
 	 * 
-	 * @param rapport
-	 * @param tondeuseDescription
+	 * @param executionReportContentBuilder
+	 * @param executionReport
 	 */
-	private void ajouterRapportExecutionProgramme(StringBuilder rapport, TondeuseDescription tondeuseDescription) {
-		String description = tondeuseDescription.decrire();
-		rapport.append(description);
-		rapport.append("\n");
+	private void addExecutionReportTo(StringBuilder executionReportContentBuilder, ExecutionReport executionReport) {
+		String executionReportContent = executionReport.display();
+		executionReportContentBuilder.append(executionReportContent);
+		executionReportContentBuilder.append("\n");
 	}
 
 	/**
-	 * recupererContenuFrom
+	 * getFileContentFrom
 	 * 
 	 * @param filePath
-	 * @return le contenu du fichier pour executer le batch
+	 * @return the file content to execute batch
 	 * @throws IOException
 	 */
-	private String recupererContenuFrom(String filePath) throws IOException {
+	private String getFileContentFrom(String filePath) throws IOException {
 		InputStream inputStream = new FileInputStream("src/test/resources/test-1-data.txt");
 		InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
 		BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-		String contenu = "";
+		String content = "";
 		String ligne;
 		while ((ligne = bufferedReader.readLine()) != null) {
-			contenu += ligne + "\n";
+			content += ligne + "\n";
 		}
 		bufferedReader.close();
-		return contenu;
+		return content;
 	}
 
 }

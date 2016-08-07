@@ -8,12 +8,8 @@ package com.thomrick.projects.xebia.tondeuses.models;
  *
  */
 public enum Orientation {
-	/** X_POSITIF */
-	X_POSITIF,
-	/** X_NEGATIF */
-	X_NEGATIF,
-	/** Y_POSITIF */
-	Y_POSITIF,
-	/** Y_NEGATIF */
-	Y_NEGATIF;
+	POSITIVE_X,
+	NEGATIVE_X,
+	POSITIVE_Y,
+	NEGATIVE_Y;
 }

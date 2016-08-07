@@ -18,20 +18,19 @@ public class BatchConsummerTest {
 	private IBatchConsummer batchConsummer;
 	
 	@Before
-	public void initialiser() {
-		batchConsummer = new BatchConsummer();
+	public void initialize() {
+		this.batchConsummer = new BatchConsummer();
 	}
 	
-	
 	@Test
-	public void doitConsommerUnFichierPourExecuterLesProgrammesDeFaconSequentielleEtRetournerLesResultatsDeLExecution() throws IOException {
+	public void it_should_return_the_rigth_display_after_runing_the_batch() throws IOException {
 		// ARRANGE
-		String cheminFichier = "src/test/resources/test-1-data.txt";
-		String resultatAttendu = chargerData("src/test/resources/test-1-result.txt");
+		String filePath = "src/test/resources/test-1-data.txt";
+		String displayExpected = chargerData("src/test/resources/test-1-result.txt");
 		// ACT
-		String resultatProduit = batchConsummer.run(cheminFichier);
+		String display = batchConsummer.run(filePath);
 		// ASSERT
-		assertEquals("Le batch ne s'est pas deroule correctement", resultatAttendu, resultatProduit);
+		assertEquals("The batch consummer run does not execute correctly", displayExpected, display);
 	}
 	
 	private String chargerData(String filePath) throws IOException {
@@ -39,9 +38,9 @@ public class BatchConsummerTest {
 		InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
 		BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
 		String data = "";
-		String ligne;
-		while ((ligne = bufferedReader.readLine()) != null) {
-			data += ligne + "\n";
+		String line;
+		while ((line = bufferedReader.readLine()) != null) {
+			data += line + "\n";
 		}
 		bufferedReader.close();
 		return data;

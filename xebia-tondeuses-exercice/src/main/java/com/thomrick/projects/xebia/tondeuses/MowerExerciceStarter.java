@@ -12,34 +12,34 @@ import com.thomrick.projects.xebia.tondeuses.consummers.impl.BatchConsummer;
  * @date 2016-08-04
  *
  */
-public class TondeusesExerciceStarter {
+public class MowerExerciceStarter {
 
 	/**
 	 * main
 	 * 
-	 * @param args
+	 * @param filePaths
 	 * @throws IOException
 	 */
 	public static void main(String[] filePaths) throws IOException {
 		IBatchConsummer batchConsummer = new BatchConsummer();
 		for (String filePath : filePaths) {
-			String rapport = batchConsummer.run(filePath);
-			printRapport(filePath, rapport);
+			String reportDisplayContent = batchConsummer.run(filePath);
+			printReportDisplayContent(filePath, reportDisplayContent);
 		}
 	}
 	
 	/**
-	 * printRapport
+	 * printReportDisplayContent
 	 * 
 	 * @param filePath
-	 * @param rapport
+	 * @param reportDisplayContent
 	 */
-	private static void printRapport(String filePath, String rapport) {
+	private static void printReportDisplayContent(String filePath, String reportDisplayContent) {
 		System.out.println("Rapport d'execution:\n");
 		System.out.println("	- fichier d'entree:");
 		System.out.println(filePath + "\n");
 		System.out.println("	- rapport de sortie:");
-		System.out.println(rapport);
+		System.out.println(reportDisplayContent);
 		System.out.println("-------------------------------------");
 	}
 
