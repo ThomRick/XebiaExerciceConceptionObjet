@@ -6,7 +6,7 @@ import com.thomrick.projects.xebia.tondeuses.consummers.IBatchConsummer;
 import com.thomrick.projects.xebia.tondeuses.consummers.impl.BatchConsummer;
 
 /**
- * TondeusesExerciceStarter.java
+ * MowerExerciceStarter.java
  *
  * @author ThomRick
  * @date 2016-08-04
